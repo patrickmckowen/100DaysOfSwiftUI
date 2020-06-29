@@ -8,6 +8,21 @@
 
 import SwiftUI
 
+struct FlagStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .cornerRadius(8)
+            .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.16), radius: 24, x: 0, y: 24)
+            .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.08), radius: 4, x: 0, y: 0)
+    }
+}
+
+extension View {
+    func flagStyle() -> some View {
+        self.modifier(FlagStyle())
+    }
+}
+
 struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
@@ -43,9 +58,7 @@ struct ContentView: View {
                     }) {
                         Image(self.countries[number])
                             .renderingMode(.original)
-                            .cornerRadius(8)
-                            .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.16), radius: 24, x: 0, y: 24)
-                            .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.08), radius: 4, x: 0, y: 0)
+                            .flagStyle()
                     }
                 }
                 .padding(.top, 32.0)
