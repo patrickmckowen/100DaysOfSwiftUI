@@ -27,7 +27,7 @@ struct ContentView: View {
     }
     
     var totalPerPerson: Double {
-        let peopleCount = Double(numberOfPeople) ?? 0
+        let peopleCount = Double(numberOfPeople) ?? 2
         let tipSelection = Double(tipPercentages[tipPercentage])
         let orderAmount = Double(checkAmount) ?? 0
         
