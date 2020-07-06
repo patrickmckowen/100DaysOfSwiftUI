@@ -35,6 +35,9 @@ struct ContentView: View {
             // end VStack
             
             .navigationBarTitle(rootWord)
+                .navigationBarItems(trailing: Button(action: startGame, label: {
+                    Text("Start Over")
+                }))
             .onAppear(perform: startGame)
                 .alert(isPresented: $showingError) {
                     Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
