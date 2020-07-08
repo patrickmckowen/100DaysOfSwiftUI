@@ -20,7 +20,7 @@ struct AstronautView: View {
         var matches = [Mission]()
         
         for mission in missions {
-            if let _ = mission.crew.first(where: { $0.name == astronaut.id }) {
+            if mission.crew.first(where: { $0.name == astronaut.id }) != nil {
                 matches.append(mission)
             }
         }
